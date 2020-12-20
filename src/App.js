@@ -4,18 +4,18 @@
   Look at each file to see what props need to be passed!
 */
 
-// Import the state hook
-import React from 'react';
-// Import the Posts (plural!) and SearchBar components, since they are used inside App component
-// Import the dummyData
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import PostsPage from "./components/PostsContainer/PostsPage";
+import SearchBar from "./components/SearchBar/SearchBarContainer";
+import dummyData from "./dummy-data";
 
 const App = () => {
   // Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
 
-  const likePost = postId => {
+  const likePost = (postId) => {
     /*
       This function serves the purpose of increasing the number of likes by one, of the post with a given id.
 
@@ -28,11 +28,11 @@ const App = () => {
         - otherwise just return the post object unchanged.
      */
   };
-
+  const [posts] = useState(dummydata);
   return (
-    <div className='App'>
-      {/* Add SearchBar and Posts here to render them */}
-      {/* Check the implementation of each component, to see what props they require, if any! */}
+    <div className="App">
+      <SearchBar />
+      <PostsPage parentData={posts} />
     </div>
   );
 };
